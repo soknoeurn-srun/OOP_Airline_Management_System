@@ -1,4 +1,5 @@
-import { Person } from "../person/Person";
+import { Booking } from "../Booking/Booking";
+import { Gender, Person } from "../person/Person";
 import { Baggage } from "./Baggage";
 import { CreditCard } from "./CreditCard";
 import { FrequentFlyer } from "./FrequentFlyer";
@@ -17,8 +18,9 @@ export class Passenger extends Person{
   private creditCard: CreditCard;
   private baggages: Baggage[] = []
   private meal: Meal;
-  constructor(firstName: string, lastName: string, phone: string, creditCard: CreditCard) {
-    super(firstName, lastName, phone)
+  private bookings : Booking [] = []
+  constructor(firstName: string, lastName: string, phone: string,gender:Gender, creditCard: CreditCard) {
+    super(firstName, lastName, phone,gender)
     this.creditCard = creditCard;
   }
   addBag(bag: Baggage){
@@ -26,5 +28,8 @@ export class Passenger extends Person{
   }
   setFrequentFlyer(frequentFlyer: FrequentFlyer) {
     this.frequentFlyer = frequentFlyer;
+  }
+  addBooking(booking: Booking){
+    this.bookings.push(booking)
   }
 }
