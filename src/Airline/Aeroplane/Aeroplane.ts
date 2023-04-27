@@ -9,4 +9,7 @@ export class Aeroplane {
     addSeat(seat: Seat):void{
         this.Seats.push(seat)
     }
+    getSeat():Seat[]{
+        return this.Seats
+    }
 }
