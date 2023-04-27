@@ -1,3 +1,5 @@
+import { Booking } from "../Booking/Booking"
+import { Flight } from "../flight/Flight"
 import { Aeroplane } from "./Aeroplane/Aeroplane"
 import { Crew } from "./Employee/Crew"
 
@@ -6,8 +8,8 @@ export class Airline {
     private address : string
     private employeeList : Crew[] = []
     private aeroplaneList : Aeroplane [] = []
-    // private bookingList : Booking[] = []
-    // private flightList : flight[] = []
+    private bookingList : Booking[] = []
+    private flightList : Flight[] = []
     constructor (companyName: string, address: string){
         this.companyName = companyName
         this.address = address
@@ -31,10 +33,10 @@ export class Airline {
     getAeroplane():Aeroplane[]{
         return this.aeroplaneList
     }
-    // getBooking():Booking[]{
-    //     return this.bookingList
-    // }
-    // getFlight():Flight[]{
-    //     return this.flightList
-    // }
+    getBooking():Booking[]{
+        return this.bookingList
+    }
+    getFlight():Flight[]{
+        return this.flightList
+    }
 }
