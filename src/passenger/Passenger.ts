@@ -19,11 +19,14 @@ export class Passenger extends Person{
   private frequentFlyer?: FrequentFlyer;
   private creditCard: CreditCard;
   private baggages: Baggage[] = []
-  private meal: Meal;
+  private meal: Meal = Meal.DairyFree;
   private bookings : Booking [] = []
-  constructor(firstName: string, lastName: string, phone: string,gender:Gender, creditCard: CreditCard) {
+  constructor(firstName: string, lastName: string, phone: string,gender:Gender, creditCard: CreditCard,meal?:Meal) {
     super(firstName, lastName, phone,gender)
     this.creditCard = creditCard;
+    if (meal != undefined){
+      this.meal = meal
+    }
   }
   addBag(bag: Baggage){
     this.baggages.push(bag)

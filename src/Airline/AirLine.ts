@@ -77,7 +77,7 @@ export class Airline {
         let passengers: Passenger[] = [];
         this.bookingList.forEach(booking => {
             for (let flights of booking.getTrip().getflight()) {
-                if (flights === flight && booking.getTrip().getReturnTrip()!== undefined) {
+                if (flights === flight && booking.getTrip().getReturnTrip() !== undefined) {
                     passengers.push(booking.getpassenger())
                 }
             }
@@ -89,18 +89,24 @@ export class Airline {
             this.flightList.push(flight)
         }
     }
-    setMeal(flight: Flight): Meal[] {
-        let listOfMeal: Meal[] = []
+    getMeal(flight: Flight) {
+        let mealCounts: { [key in Meal]: number } = {
+            [Meal.Vegetarian]: 0,
+            [Meal.Vegan]: 0,
+            [Meal.DairyFree]: 0,
+            [Meal.Koshor]: 0,
+            [Meal.Hala]: 0,
+            [Meal.SoFort]: 0,
+        };
         this.bookingList.forEach(booking => {
             for (let flights of booking.getTrip().getflight()) {
                 if (flights === flight) {
-                    if (listOfMeal.indexOf(booking.getpassenger().getMeal())) {
-                        listOfMeal.push(booking.getpassenger().getMeal())
-                    }
+                    mealCounts[booking.getpassenger().getMeal()]++;
                 }
             }
         });
-        return listOfMeal
+        return mealCounts;
+
     }
     getAllSallary(): number {
         let sallarys: number = 0
