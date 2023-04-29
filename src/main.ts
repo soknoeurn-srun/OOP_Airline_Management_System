@@ -14,7 +14,7 @@ import { Route } from "./flight/Route";
 import { Baggage } from "./passenger/Baggage";
 import { CardType, CreditCard } from "./passenger/CreditCard";
 import { FlyerStatus, FrequentFlyer } from "./passenger/FrequentFlyer";
-import { Passenger } from "./passenger/Passenger";
+import { Meal, Passenger } from "./passenger/Passenger";
 import { Tag } from "./passenger/Tag";
 import { Gender } from "./person/Person";
 
@@ -77,10 +77,10 @@ let card4 = new CreditCard('4567890145678901', '03/26', '234', CardType.VISA);
 let card5 = new CreditCard('5678901256789012', '08/28', '567', CardType.PayPal);
 // create passenger
 let passenger1 = new Passenger('John', 'Doe', '555-1234', Gender.Male, card1);
-let passenger2 = new Passenger('Jane', 'Doe', '555-5678', Gender.Female, card2);
-let passenger3 = new Passenger('Bob', 'Smith', '555-9876', Gender.Male, card3);
-let passenger4 = new Passenger('Alice', 'Jones', '555-4321', Gender.Female, card4);
-let passenger5 = new Passenger("SeangEng","Ith",'039483948',Gender.Female,card5)
+let passenger2 = new Passenger('Jane', 'Doe', '555-5678', Gender.Female, card2,Meal.Hala);
+let passenger3 = new Passenger('Bob', 'Smith', '555-9876', Gender.Male, card3,Meal.Hala);
+let passenger4 = new Passenger('Alice', 'Jones', '555-4321', Gender.Female, card4,Meal.Vegetarian);
+let passenger5 = new Passenger("SeangEng","Ith",'039483948',Gender.Female,card5,Meal.Vegan)
 // craete tag for the baggage
 let tag1 = new Tag('A123');
 let tag2 = new Tag('B456');
@@ -134,6 +134,7 @@ airline3.addAeroplane(aeroplane6,aeroplane7,aeroplane8)
 // In airline set a trip 
 // passenger booking trip and return booking
 let booking1 = new Booking("KOLL889",trip1, passenger1);
+//set a Return trip 
 booking1.getTrip().setReturnTrip(trip2)
 let booking2 = new Booking("KOPL889",trip2, passenger2);
 let booking3 = new Booking("KDIEM3",trip3, passenger3);
@@ -143,16 +144,20 @@ let booking5 = new Booking("EIUK90",trip5, passenger5);
 airline1.addBooking(booking1,booking2)
 airline2.addBooking(booking3,booking4)
 
+// Added airline
 airport1.addAirline(airline1)
 airport2.addAirline(airline2)
 
-// // 3 As an airline manager, I want to know for a given flight, how many passengers were booking return
-// console.log(airline2.getBookingFlights(flight4))
-// // 4 As an airline pilot, I want to know, for a given date, how many flights I have to join
-// console.log(airline3.getFlight(pilot1,date1))
-// //5 As an airline manager, I want to find out how much salary I pay all my employee
-// console.log(airline1.getAllSallary())
-// //6 As a passenger, I want to know which gate my plane is waiting a
-// console.log(flight1.getGate())
+// get details passenger 
 let getDetialPassenger = airport2.getDetialPassenger("KDIEM3")
 console.log(getDetialPassenger);
+// 2 As an airline manager, I want to know for a given flight, how many passengers were booking return
+console.log(airline1.getBookingFlights(flight1))
+// 3 As an airline pilot, I want to know, for a given date, how many flights I have to join
+console.log(airline3.getFlight(pilot1,date1))
+//4 As an airline chef, I need to know, for a given flight, how many of each meal type I need to prepare.
+console.log(airline1.getMeal(flight1))
+//5 As an airline manager, I want to find out how much salary I pay all my employees.
+console.log(airline1.getAllSallary())
+//6 As a passenger, I want to know which gate my plane is waiting a
+console.log(flight1.getGate())
