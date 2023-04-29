@@ -10,10 +10,10 @@ export class CreditCard {
   private expiration: string;
   private cvv: string;
   private type: CardType;
-
-  constructor(cardNumber: string, expiration: string, cvv: string) {
+  constructor(cardNumber: string, expiration: string, cvv: string,type: CardType) {
     this.cardNumber = cardNumber;
     this.expiration = expiration;
     this.cvv = cvv;
+    this.type = type
   }
 }

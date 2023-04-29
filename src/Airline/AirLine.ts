@@ -1,4 +1,5 @@
 import { Booking } from "../Booking/Booking"
+import { Trip } from "../Booking/Trip"
 import { Airport } from "../flight/Airport"
 import { DateTime } from "../flight/DateTime"
 import { Flight } from "../flight/Flight"
@@ -9,7 +10,7 @@ import { Crew } from "./Employee/Crew"
 import { Pilot } from "./Employee/Pilot"
 
 export class Airline {
-    protected companyName: string
+    public companyName: string
     private address: string
     private employeeList: Crew[] = []
     private aeroplaneList: Aeroplane[] = []
@@ -21,21 +22,28 @@ export class Airline {
         this.address = address
     }
 
-    addEmployee(employee: Crew): void {
-        this.employeeList.push(employee)
+    addEmployee(...employees: Crew[]): void {
+        for (let employee of employees) {
+            this.employeeList.push(employee)
+        }
     }
-    addAeroplane(aeroplane: Aeroplane): void {
-        this.aeroplaneList.push(aeroplane)
+    addAeroplane(...aeroplanes: Aeroplane[]): void {
+        for (let aeroplane of aeroplanes) {
+            this.aeroplaneList.push(aeroplane)
+        }
     }
-    addBooking(book: Booking): void {
-        this.bookingList.push(book)
+    addBooking(...books: Booking[]): void {
+        for (let book of books) {
+            this.bookingList.push(book)
+        }
     }
-    addAirport(airport: Airport): void {
-        this.airportList.push(airport)
+    addAirport(...airports: Airport[]): void {
+        for (let airport of airports) {
+            this.airportList.push(airport)
+        }
     }
-    setFlight(flight: Flight): void {
-        this.flightList.push(flight)
-    }
+
+
     getCrews(): Crew[] {
         return this.employeeList
     }
@@ -54,9 +62,12 @@ export class Airline {
             for (let employee of flight.getEmployees()) {
                 if (employee.getJobTitle() === CategoryEmployeeType.Pilot) {
                     let staff = employee as Pilot
-                    if (staff === pilot && flight.getArrivalTime() === date || flight.getDepartureTime() === date) {
-                        flights.push(flight)
+                    if (pilot === staff) {
+                        if (flight.getArrivalTime() === date || flight.getDepartureTime() === date) {
+                            flights.push(flight)
+                        }
                     }
+
                 }
             }
         });
@@ -72,6 +83,11 @@ export class Airline {
             }
         });
         return passengers;
+    }
+    setFlight(...flights: Flight[]): void {
+        for (let flight of flights) {
+            this.flightList.push(flight)
+        }
     }
     setMeal(flight: Flight): Meal[] {
         let listOfMeal: Meal[] = []
