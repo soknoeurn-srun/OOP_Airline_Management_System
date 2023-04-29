@@ -1,4 +1,6 @@
 import { Booking } from "../Booking/Booking";
+import { Flight } from "../flight/Flight";
+import { Gate } from "../flight/Gate";
 import { Gender, Person } from "../person/Person";
 import { Baggage } from "./Baggage";
 import { CreditCard } from "./CreditCard";
@@ -31,5 +33,32 @@ export class Passenger extends Person{
   }
   addBooking(booking: Booking){
     this.bookings.push(booking)
+  }
+  getBooking():Booking[]{
+    return this.bookings
+  }
+  getMeal():Meal{
+    return this.meal
+  }
+  getBagge():Baggage[]{
+    return this.baggages
+  }
+  getFlight(booking : Booking):undefined{
+    this.bookings.forEach(bookings => {
+        if (bookings === booking){
+          return bookings.getTrip().getflight()
+        }
+    });
+    return undefined
+  }
+  getGate(flight: Flight):Gate[]|undefined{
+    this.bookings.forEach(booking => {
+       for(let flights of booking.getTrip().getflight()){
+           if (flight === flights){
+            return flight.getGate()
+           }
+       }
+    });
+    return undefined
   }
 }

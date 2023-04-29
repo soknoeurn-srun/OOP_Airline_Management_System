@@ -9,7 +9,7 @@ export enum CategoryEmployeeType{
 export class Crew extends Person{
     protected jobTitle: CategoryEmployeeType;
     protected salary: number;
-    constructor (firstName: string, lastName: string, phone: string,gender:Gender, jobTitle: CategoryEmployeeType){
+    constructor (firstName: string, lastName: string, phone: string,gender: Gender, jobTitle: CategoryEmployeeType){
         super(firstName, lastName, phone,gender)
         this.jobTitle = jobTitle
     }
@@ -18,5 +18,8 @@ export class Crew extends Person{
     }
     getJobTitle():CategoryEmployeeType  {
         return this.jobTitle
+    }
+    getSalary():number {
+       return this.salary
     }
 }
