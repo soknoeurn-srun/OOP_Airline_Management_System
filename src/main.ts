@@ -143,11 +143,16 @@ let booking5 = new Booking("EIUK90",trip5, passenger5);
 airline1.addBooking(booking1,booking2)
 airline2.addBooking(booking3,booking4)
 
-// 3 As an airline manager, I want to know for a given flight, how many passengers were booking return
-console.log(airline2.getBookingFlights(flight4))
-// 4 As an airline pilot, I want to know, for a given date, how many flights I have to join
-console.log(airline3.getFlight(pilot1,date1))
-//5 As an airline manager, I want to find out how much salary I pay all my employee
-console.log(airline1.getAllSallary())
-//6 As a passenger, I want to know which gate my plane is waiting a
-console.log(flight1.getGate())
+airport1.addAirline(airline1)
+airport2.addAirline(airline2)
+
+// // 3 As an airline manager, I want to know for a given flight, how many passengers were booking return
+// console.log(airline2.getBookingFlights(flight4))
+// // 4 As an airline pilot, I want to know, for a given date, how many flights I have to join
+// console.log(airline3.getFlight(pilot1,date1))
+// //5 As an airline manager, I want to find out how much salary I pay all my employee
+// console.log(airline1.getAllSallary())
+// //6 As a passenger, I want to know which gate my plane is waiting a
+// console.log(flight1.getGate())
+let getDetialPassenger = airport2.getDetialPassenger("KDIEM3")
+console.log(getDetialPassenger);

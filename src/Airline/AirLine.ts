@@ -8,7 +8,6 @@ import { Aeroplane } from "./Aeroplane/Aeroplane"
 import { CategoryEmployeeType } from "./Employee/Crew"
 import { Crew } from "./Employee/Crew"
 import { Pilot } from "./Employee/Pilot"
-
 export class Airline {
     public companyName: string
     private address: string
@@ -21,7 +20,6 @@ export class Airline {
         this.companyName = companyName
         this.address = address
     }
-
     addEmployee(...employees: Crew[]): void {
         for (let employee of employees) {
             this.employeeList.push(employee)
@@ -42,8 +40,6 @@ export class Airline {
             this.airportList.push(airport)
         }
     }
-
-
     getCrews(): Crew[] {
         return this.employeeList
     }

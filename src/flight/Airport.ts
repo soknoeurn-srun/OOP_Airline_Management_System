@@ -18,13 +18,17 @@ export class Airport {
   addAirline(airline: Airline): void {
     this.airlineList.push(airline);
   }
-  getDetialPassenger(bookingNumber: string): undefined {
-    this.bookings.forEach((booking)=>{
-      if(booking.getreferenceNumber() === bookingNumber){
-        return booking.getpassenger()
-      }
+  getDetialPassenger(bookingNumber: string): string {
+    this.airlineList.forEach(airLine=>{
+      airLine.getBooking().forEach(booking=>{
+        if(booking.getreferenceNumber() == bookingNumber){
+          return booking.getpassenger()
+        }
+
+      })
+     
     })
-    return undefined
+    return "There is no passenger here!"
   }
 
 }
