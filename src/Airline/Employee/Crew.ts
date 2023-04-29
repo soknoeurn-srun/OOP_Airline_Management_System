@@ -1,4 +1,4 @@
-import { Person } from "../../person/Person";
+import { Gender, Person } from "../../person/Person";
 
 
 export enum CategoryEmployeeType{
@@ -9,8 +9,8 @@ export enum CategoryEmployeeType{
 export class Crew extends Person{
     protected jobTitle: CategoryEmployeeType;
     protected salary: number;
-    constructor (firstName: string, lastName: string, phone: string, jobTitle: CategoryEmployeeType){
-        super(firstName, lastName, phone)
+    constructor (firstName: string, lastName: string, phone: string,gender: Gender, jobTitle: CategoryEmployeeType){
+        super(firstName, lastName, phone,gender)
         this.jobTitle = jobTitle
     }
     setSalary(salary: number) {
@@ -18,5 +18,8 @@ export class Crew extends Person{
     }
     getJobTitle():CategoryEmployeeType  {
         return this.jobTitle
+    }
+    getSalary():number {
+       return this.salary
     }
 }
