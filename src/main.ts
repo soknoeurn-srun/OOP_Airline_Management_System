@@ -23,14 +23,11 @@ let airline1 = new Airline('Delta Air Lines', '1030 Delta Blvd, Atlanta, GA 3035
 let airline2 = new Airline('American Airlines', '1 Skyview Dr, Fort Worth, TX 76155, USA');
 let airline3 = new Airline('United Airlines', '233 S Wacker Dr, Chicago, IL 60606, USA');
 let airline4 = new Airline('Emirates', 'Garhoud, Dubai, United Arab Emirates');
-let airline5 = new Airline('Qatar Airways', 'Airport Rd, Doha, Qatar');
-let airline6 = new Airline('PNC Airline','BP 511, Phum Tropeang Chhuk (Borey Sorla) Sangtak, Street 371, Phnom Penh')
 //create new areoplane 
 let aeroplane1 = new Aeroplane('B-1234');
 let aeroplane2 = new Aeroplane('B-5678');
 let aeroplane3 = new Aeroplane('B-9101');
 let aeroplane4 = new Aeroplane('C-2468');
-let aeroplane5 = new Aeroplane('C-1357');
 let aeroplane6 = new Aeroplane('C-3690');
 let aeroplane7 = new Aeroplane('D-1234');
 let aeroplane8 = new Aeroplane('D-5678');
@@ -42,11 +39,6 @@ let seat2 = new Seat('1B', FareBasis.EconomicClass);
 let seat3 = new Seat('2A', FareBasis.EconomyFlex);
 let seat4 = new Seat('2B', FareBasis.EconomyFlex);
 let seat5 = new Seat('3A', FareBasis.BusinessClass);
-let seat6 = new Seat('3B', FareBasis.BusinessClass);
-let seat7 = new Seat('4A', FareBasis.EconomicClass);
-let seat8 = new Seat('4B', FareBasis.EconomicClass);
-let seat9 = new Seat('5A', FareBasis.EconomyFlex);
-let seat10 = new Seat('5B', FareBasis.EconomyFlex);
 // create a route
 let route1 = new Route('JFK-LAX');
 let route2 = new Route('LAX-ORD');
@@ -105,20 +97,15 @@ let baggage5 = new Baggage(30, 90, tag5);
 let FrequentFlyer1 = new FrequentFlyer("SeangEng","Ith",FlyerStatus.GOLD)
 passenger1.setFrequentFlyer(FrequentFlyer1)
 // create flight
-let flight1 = new Flight('DL123', date1, date2, route1, route2, airline1);
-let flight2 = new Flight('AA456', date2, date3, route2, route3, airline2);
-let flight3 = new Flight('UA789', date3, date1, route3, route1, airline3);
-let flight4 = new Flight('EK012', date1, date2, route1, route2, airline4);
+let flight1 = new Flight('DL123', date1, date2, route1, route2, airline1,aeroplane2,gate1);
+let flight2 = new Flight('AA456', date2, date3, route2, route3, airline2,aeroplane1,gate2);
+let flight3 = new Flight('UA789', date3, date1, route3, route1, airline3,aeroplane7,gate3);
+let flight4 = new Flight('EK012', date1, date2, route1, route2, airline4,aeroplane6,gate2);
 // add employee to the flight
 flight1.addEmployee(pilot1,pilot2,fly_attendent1,co_pilot1)
 flight2.addEmployee(pilot1,fly_attendent1,co_pilot1)
 flight3.addEmployee(pilot2,fly_attendent2,co_pilot1)
 flight4.addEmployee(pilot1,pilot2,fly_attendent1,co_pilot1,fly_attendent2)
-// add gat to flight
-flight1.addGate(gate1)
-flight2.addGate(gate2)
-flight3.addGate(gate3)
-flight4.addGate(gate1)
 // create a trip 
 let trip1 = new Trip('USA');
 let trip2 = new Trip('UK');
@@ -160,3 +147,7 @@ airline2.addBooking(booking3,booking4)
 console.log(airline2.getBookingFlights(flight4))
 // 4 As an airline pilot, I want to know, for a given date, how many flights I have to join
 console.log(airline3.getFlight(pilot1,date1))
+//5 As an airline manager, I want to find out how much salary I pay all my employee
+console.log(airline1.getAllSallary())
+//6 As a passenger, I want to know which gate my plane is waiting a
+console.log(flight1.getGate())
