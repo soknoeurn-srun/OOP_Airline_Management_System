@@ -77,7 +77,7 @@ export class Airline {
         let passengers: Passenger[] = [];
         this.bookingList.forEach(booking => {
             for (let flights of booking.getTrip().getflight()) {
-                if (flights === flight) {
+                if (flights === flight && booking.getTrip().getReturnTrip()!== undefined) {
                     passengers.push(booking.getpassenger())
                 }
             }

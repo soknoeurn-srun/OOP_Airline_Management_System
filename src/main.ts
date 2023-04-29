@@ -156,7 +156,7 @@ let booking5 = new Booking("EIUK90",trip5, passenger5);
 airline1.addBooking(booking1,booking2)
 airline2.addBooking(booking3,booking4)
 
-// 3 As an airline manager, I want to know for a given flight, how many passengers were booking
-console.log(airline1.getBookingFlights(flight4))
+// 3 As an airline manager, I want to know for a given flight, how many passengers were booking return
+console.log(airline2.getBookingFlights(flight4))
 // 4 As an airline pilot, I want to know, for a given date, how many flights I have to join
 console.log(airline3.getFlight(pilot1,date1))
