@@ -5,12 +5,10 @@ export class Booking{
     private referenceNumber: string;
     private trip : Trip 
     private passenger : Passenger
-    constructor (trip : Trip, passenger : Passenger) {
+    constructor (referenceNumber:string,trip : Trip, passenger : Passenger) {
+        this.referenceNumber = referenceNumber
         this.trip = trip
         this.passenger = passenger
-    }
-    setReferenceNumber(number: string) {
-        this.referenceNumber = number
     }
     getreferenceNumber():string {
         return this.referenceNumber
